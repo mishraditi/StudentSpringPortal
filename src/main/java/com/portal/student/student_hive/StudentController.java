@@ -25,4 +25,10 @@ public class StudentController{
         sb.append("</html>");
 
         return sb.toString();
-    }}
+    }
+    // /src/main/resources/META-INF/resources/WEB-INF/jsp/helloStudents.jsp
+    @RequestMapping("render-hello-jsp")
+    public String sayHellojsp(){
+        return "helloStudents";
+    }
+}
