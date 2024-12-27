@@ -6,14 +6,16 @@ package com.portal.student.student_management;
         private int age;
         private String grade;
         private String address;
+        private String teacherName;
 
         // Constructor
-        public Student(int id, String name, int age, String grade, String address) {
+        public Student(int id, String name, int age, String grade, String address ,String teacherName) {
             this.id = id;
             this.name = name;
             this.age = age;
             this.grade = grade;
             this.address = address;
+            this.teacherName = teacherName;
         }
 
         // Getters and Setters
@@ -56,9 +58,17 @@ package com.portal.student.student_management;
         public void setAddress(String address) {
             this.address = address;
         }
+        public String getTeacherName() {
+            return teacherName;
+        }
+
+        public void setTeacherName(String teacherName) {
+            this.teacherName = teacherName;
+        }
 
 @Override
 public String toString() {
-    return "Student [id=" + id + ", name=" + name + ", age=" + age + "," +
-            " grade=" + grade + ", address=" + address + "]";
-}}
+    return "Student [id=" + id + ", name=" + name + ", age=" + age + ", grade=" + grade +
+            ", address=" + address + ", teacherName=" + teacherName + "]";
+}
+}
