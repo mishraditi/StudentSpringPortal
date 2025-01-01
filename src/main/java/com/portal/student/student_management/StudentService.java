@@ -3,6 +3,7 @@ package com.portal.student.student_management;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Service
 public class StudentService {
@@ -19,7 +20,12 @@ public List<Student> getAllStudents() {
     return students;
 }
 
-public List<Student> findByname(String name){
-    return students;
-}
+//public List<Student> findByname(String name){
+//    return students;
+//}
+    public List<Student> findByTeachername(String name){
+    Predicate<? super Student> predicate
+     = student -> student.getTeacherName().equalsIgnoreCase(name); //parameter representing a single Student object from the list.
+    return students.stream().filter(predicate).toList();
+    }
 }
