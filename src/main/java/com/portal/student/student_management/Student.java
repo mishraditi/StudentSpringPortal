@@ -1,7 +1,7 @@
 package com.portal.student.student_management;
 
     public class Student {
-        private int id;
+        private Integer id;
         private String name;
         private int age;
         private String grade;
@@ -9,7 +9,7 @@ package com.portal.student.student_management;
         private String teacherName;
 
         // Constructor
-        public Student(int id, String name, int age, String grade, String address ,String teacherName) {
+        public Student(Integer id, String name, int age, String grade, String address ,String teacherName) {
             this.id = id;
             this.name = name;
             this.age = age;
@@ -19,7 +19,7 @@ package com.portal.student.student_management;
         }
 
         // Getters and Setters
-        public int getId() {
+        public Integer getId() {
             return id;
         }
 
