@@ -26,18 +26,18 @@ public class StudentRecordController {
     }
 
     @RequestMapping(value="add-students", method = RequestMethod.GET)
-    public String showNewStudentPage() {
+    public String showNewStudentPage(ModelMap model) {
+        Student student = new Student(0,"",0,"","","");
+        model.put("student", student);
         return "student";
     }
 
     @RequestMapping(value="add-students", method = RequestMethod.POST)
-    public String addNewStudents(@RequestParam String name, @RequestParam int age,
-                                 @RequestParam String grade, @RequestParam String address,
-                                 @RequestParam String teacherName) {
+    public String addNewStudents(Student student){
+//@RequestParam String name,@RequestParam int age,@RequestParam String grade, @RequestParam String address, @RequestParam String teacherName
 //        String name = (String)model.get("name");
-        studentService.addStudent(name, age, grade, address, teacherName);
-System.out.println("Received data: Name=" + name + ", Age=" + age + ", Grade=" + grade + ", Address=" + address + ", TeacherName=" + teacherName);
-
+studentService.addStudent(student.getName(), student.getAge(), student.getGrade() , student.getAddress(), student.getTeacherName());
+//System.out.println("Received data: Name=" + name + ",Age=" + age + ",Grade=" + grade + ",Address=" + address + ", TeacherName=" + teacherName);
         return "redirect:list-students";
     }
 }
