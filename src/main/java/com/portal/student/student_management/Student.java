@@ -1,7 +1,10 @@
 package com.portal.student.student_management;
 
-    public class Student {
+import jakarta.validation.constraints.Size;
+
+public class Student {
         private Integer id;
+        @Size(min = 8 , message ="Name must be at least 8 characters, including surname")
         private String name;
         private int age;
         private String grade;
