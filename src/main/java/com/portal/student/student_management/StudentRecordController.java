@@ -1,6 +1,8 @@
 package com.portal.student.student_management;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,9 +35,12 @@ public class StudentRecordController {
     }
 
     @RequestMapping(value="add-students", method = RequestMethod.POST)
-    public String addNewStudents(Student student){
+    public String addNewStudents(@Valid Student student , BindingResult result){
 //@RequestParam String name,@RequestParam int age,@RequestParam String grade, @RequestParam String address, @RequestParam String teacherName
 //        String name = (String)model.get("name");
+        if(result.hasErrors()){
+            return "student";
+        }
 studentService.addStudent(student.getName(), student.getAge(), student.getGrade() , student.getAddress(), student.getTeacherName());
 //System.out.println("Received data: Name=" + name + ",Age=" + age + ",Grade=" + grade + ",Address=" + address + ", TeacherName=" + teacherName);
         return "redirect:list-students";
