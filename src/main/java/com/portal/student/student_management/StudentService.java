@@ -38,5 +38,9 @@ public List<Student> getAllStudents() {
 //         System.out.println("Student added: " + student);
 //        System.out.prtintln("Current students list: " + students);
     }
-
+    public void deleteById(int id){
+        Predicate<? super Student> predicate
+        = student -> student.getId()==id;
+        students.removeIf(predicate);
+    }
 }

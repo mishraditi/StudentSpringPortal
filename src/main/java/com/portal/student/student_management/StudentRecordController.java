@@ -45,4 +45,9 @@ studentService.addStudent(student.getName(), student.getAge(), student.getGrade(
 //System.out.println("Received data: Name=" + name + ",Age=" + age + ",Grade=" + grade + ",Address=" + address + ", TeacherName=" + teacherName);
         return "redirect:list-students";
     }
+    @RequestMapping("delete-student")
+    public String deleteStudent(@RequestParam int id) {
+        studentService.deleteById(id);
+        return "redirect:list-students";
+    }
 }
