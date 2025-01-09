@@ -12,6 +12,7 @@
 
     <form:form  method="post" modelAttribute = "student">
         Name: <form:input type="text" path="name" required = "required"/><br>
+        <form:errors path="name" cssClass = "text-warning"/>
         Age: <form:input type="number" path="age"/><br>
         Grade: <form:input type="text" path="grade"/><br>
        Address: <form:input type="text" path="address"/><br>
