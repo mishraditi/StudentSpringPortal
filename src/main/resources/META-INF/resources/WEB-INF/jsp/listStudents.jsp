@@ -10,36 +10,37 @@
 	</head>
 	<body>
 	<div class="container">
-			<h1>List of students</h1>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>id</th>
-						<th>Name</th>
-                        <th>TeacherName</th>
-						<th>Age</th>
-						<th>Grade</th>
-                        <th>Address</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${students}" var="student">
-						<tr>
-							<td>${student.id}</td>
-							<td>${student.name}</td>
-                            <td>${student.teacherName}</td>
-							<td>${student.age}</td>
-							<td>${student.grade}</td>
-                            <td>${student.address}</td>
-                       <td> <a href="delete-student?id=${student.id}" class="btn btn-warning">Delete</a> </td>
+    <h1>List of students</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>TeacherName</th>
+                <th>Age</th>
+                <th>Grade</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${students}" var="student">
+                <tr>
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td>${student.teacherName}</td>
+                    <td>${student.age}</td>
+                    <td>${student.grade}</td>
+                    <td>${student.address}</td>
+               <td> <a href="delete-student?id=${student.id}" class="btn btn-warning">Delete</a> </td>
+               <td> <a href="update-student?id=${student.id}" class="btn btn-success">Update</a> </td>
 
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-						<a href="add-students" class="btn btn-success">Add Students</a>
-			</div>
-                <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-                <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+                <a href="add-students" class="btn btn-success">Add Students</a>
+    </div>
+        <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+        <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 	</body>
 </html>
