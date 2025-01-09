@@ -1,5 +1,6 @@
 package com.portal.student.student_management;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +43,14 @@ public List<Student> getAllStudents() {
         Predicate<? super Student> predicate
         = student -> student.getId()==id;
         students.removeIf(predicate);
+    }
+    public Student findById(int id) {
+        Predicate<? super Student> predicate = student -> student.getId() == id;
+        Student student = students.stream().filter(predicate).findFirst().get();
+        return student;
+    }
+    public void updateStudent(@Valid Student student){
+    deleteById(student.getId());
+    students.add(student);
     }
 }
