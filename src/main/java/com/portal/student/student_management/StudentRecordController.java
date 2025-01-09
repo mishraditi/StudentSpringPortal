@@ -17,37 +17,56 @@ public class StudentRecordController {
 
     public StudentRecordController(StudentService studentService) {
 //        super();
-        this.studentService = studentService ;
+        this.studentService = studentService;
     }
+
     @RequestMapping("list-students")
     public String listAllStudents(ModelMap model) {
 //        List<Student> students = studentService.findByTeachername("Mr. Smith");
         List<Student> students = studentService.getAllStudents(); // Get all students
-        model.addAttribute("students",students);
+        model.addAttribute("students", students);
         return "listStudents";
     }
 
-    @RequestMapping(value="add-students", method = RequestMethod.GET)
+    @RequestMapping(value = "add-students", method = RequestMethod.GET)
     public String showNewStudentPage(ModelMap model) {
-        Student student = new Student(0,"",0,"","","");
+        Student student = new Student(0, "", 0, "", "", "");
         model.put("student", student);
         return "student";
     }
 
-    @RequestMapping(value="add-students", method = RequestMethod.POST)
-    public String addNewStudents(@Valid Student student , BindingResult result){
+    @RequestMapping(value = "add-students", method = RequestMethod.POST)
+    public String addNewStudents(@Valid Student student, BindingResult result) {
 //@RequestParam String name,@RequestParam int age,@RequestParam String grade, @RequestParam String address, @RequestParam String teacherName
 //        String name = (String)model.get("name");
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "student";
         }
-studentService.addStudent(student.getName(), student.getAge(), student.getGrade() , student.getAddress(), student.getTeacherName());
+        studentService.addStudent(student.getName(), student.getAge(), student.getGrade(), student.getAddress(), student.getTeacherName());
 //System.out.println("Received data: Name=" + name + ",Age=" + age + ",Grade=" + grade + ",Address=" + address + ", TeacherName=" + teacherName);
         return "redirect:list-students";
     }
+
     @RequestMapping("delete-student")
     public String deleteStudent(@RequestParam int id) {
         studentService.deleteById(id);
+        return "redirect:list-students";
+    }
+
+    @RequestMapping(value = "update-student" , method = RequestMethod.GET)
+    public String showUpdateStudentPage(@RequestParam int id, ModelMap model) {
+        Student student = studentService.findById(id);
+        model.addAttribute("student" , student);
+        return "student";
+    }
+    @RequestMapping(value="update-student", method = RequestMethod.POST)
+    public String updateStudent(ModelMap model, @Valid Student student, BindingResult result) {
+
+        if(result.hasErrors()) {
+            return "student";
+        }
+
+        studentService.updateStudent(student);
         return "redirect:list-students";
     }
 }
