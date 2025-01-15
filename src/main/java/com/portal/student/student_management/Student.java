@@ -2,22 +2,24 @@ package com.portal.student.student_management;
 
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
+
 public class Student {
         private Integer id;
         @Size(min = 8 , message ="Name must be at least 8 characters, including surname")
         private String name;
         private int age;
         private String grade;
-        private String address;
-        private String teacherName;
+        private LocalDate enrollmentDate;
+       private String teacherName;
 
         // Constructor
-        public Student(Integer id, String name, int age, String grade, String address ,String teacherName) {
+        public Student(Integer id, String name, int age, String grade, LocalDate enrollmentDate ,String teacherName) {
             this.id = id;
             this.name = name;
             this.age = age;
             this.grade = grade;
-            this.address = address;
+            this.enrollmentDate = enrollmentDate;
             this.teacherName = teacherName;
         }
 
@@ -54,12 +56,12 @@ public class Student {
             this.grade = grade;
         }
 
-        public String getAddress() {
-            return address;
+        public LocalDate getEnrollmentDate() {
+            return enrollmentDate;
         }
 
-        public void setAddress(String address) {
-            this.address = address;
+        public void setEnrollmentDate(LocalDate enrollmentDate) {
+            this.enrollmentDate = enrollmentDate;
         }
         public String getTeacherName() {
             return teacherName;
@@ -69,9 +71,14 @@ public class Student {
             this.teacherName = teacherName;
         }
 
-@Override
-public String toString() {
-    return "Student [id=" + id + ", name=" + name + ", age=" + age + ", grade=" + grade +
-            ", address=" + address + ", teacherName=" + teacherName + "]";
-}
+    @Override
+    public String toString() {
+        return "Student [id=" + id +
+                ", name=" + name +
+                ", age=" + age +
+                ", grade=" + grade +
+                ", teacherName=" + teacherName +
+                ", enrollmentDate=" + enrollmentDate + "]";
+    }
+
 }
