@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -30,7 +31,7 @@ public class StudentRecordController {
 
     @RequestMapping(value = "add-students", method = RequestMethod.GET)
     public String showNewStudentPage(ModelMap model) {
-        Student student = new Student(0, "", 0, "", "", "");
+        Student student = new Student(0, "", 0, "", LocalDate.now(), "");
         model.put("student", student);
         return "student";
     }
@@ -42,7 +43,7 @@ public class StudentRecordController {
         if (result.hasErrors()) {
             return "student";
         }
-        studentService.addStudent(student.getName(), student.getAge(), student.getGrade(), student.getAddress(), student.getTeacherName());
+        studentService.addStudent(student.getName(), student.getAge(), student.getGrade(), student.getEnrollmentDate(), student.getTeacherName());
 //System.out.println("Received data: Name=" + name + ",Age=" + age + ",Grade=" + grade + ",Address=" + address + ", TeacherName=" + teacherName);
         return "redirect:list-students";
     }
