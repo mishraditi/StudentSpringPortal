@@ -2,6 +2,8 @@ package com.portal.student.student_management;
 
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -14,10 +16,11 @@ private static List<Student> students = new ArrayList<>();
 private static int studentCount = 0;
 
 static {
-    students.add(new Student(++studentCount, "Alice", 15, "10th Grade", "123 Main St","Mr. Smith"));
-    students.add(new Student(++studentCount, "Bob", 16, "11th Grade", "456 Oak Rd","Mr. Smith"));
-    students.add(new Student(++studentCount, "Charlie", 14, "9th Grade", "789 Pine Ave","Ms. Johnson"));
-    students.add(new Student(++studentCount, "Diana", 17, "12th Grade", "101 Maple Dr","Mr. Smith"));
+    students.add(new Student(++studentCount, "Alice", 15, "10th Grade",  LocalDate.of(2025, 1, 10),"Mr. Smith"));
+    students.add(new Student(++studentCount, "Bob", 16, "11th Grade",  LocalDate.of(2025, 2, 15),"Mr. Smith"));
+    students.add(new Student(++studentCount, "Charlie", 14, "9th Grade",LocalDate.of(2025, 3, 20),"Ms. Johnson"));
+    students.add(new Student(++studentCount, "Diana", 17, "12th Grade", LocalDate.now().plusYears(0) ,"Mr.smith"));
+
 }
 
 public List<Student> getAllStudents() {
@@ -33,8 +36,8 @@ public List<Student> getAllStudents() {
     return students.stream().filter(predicate).toList();
     }
 
-    public void addStudent(String name, int age, String grade, String address ,String teacherName){
-        Student student = new Student(++studentCount,name,age,grade,address,teacherName);
+    public void addStudent(String name, int age, String grade, LocalDate enrollmentDate,String teacherName){
+        Student student = new Student(++studentCount,name,age,grade,enrollmentDate,teacherName);
         students.add(student);
 //         System.out.println("Student added: " + student);
 //        System.out.prtintln("Current students list: " + students);
