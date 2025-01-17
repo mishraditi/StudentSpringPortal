@@ -26,8 +26,8 @@ public class SpringSecurityConfiguration {
 
         UserDetails userDetails = User.builder()
                 .passwordEncoder(passwordEncoder)
-
-                .password("dummy")
+                .username("MishrAditi")
+                .password("udemy")
                 .roles("USER","ADMIN")
                 .build();
 
