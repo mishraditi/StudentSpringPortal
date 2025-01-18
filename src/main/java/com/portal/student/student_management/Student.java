@@ -1,10 +1,15 @@
 package com.portal.student.student_management;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
-
+@Entity
 public class Student {
+       @Id
+       @GeneratedValue
         private Integer id;
         @Size(min = 8 , message ="Name must be at least 8 characters, including surname")
         private String name;
