@@ -8,7 +8,10 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 @Entity
 public class Student {
-       @Id
+    public Student() {
+    }
+
+    @Id
        @GeneratedValue
         private Integer id;
         @Size(min = 8 , message ="Name must be at least 8 characters, including surname")
