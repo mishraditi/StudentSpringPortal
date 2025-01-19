@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.time.LocalDate;
 import java.util.List;
 
-@Controller
+//@Controller
 @SessionAttributes("name")
 public class StudentRecordController {
     private StudentService studentService;
